@@ -1,0 +1,84 @@
+SPLIT SIZES
+source_calibration=10 session=src-cal
+target_calibration=10 session=tgt-cal
+target_test_normal=10 session=tgt-test
+target_test_anomaly=8 session=tgt-anomaly
+sessions disjoint: src-cal, tgt-cal, tgt-test, tgt-anomaly
+
+empirical q=0.9 source threshold=1.8 (rank 9/10)
+empirical q=0.9 target threshold=2.8 (rank 9/10)
+gamma90 source-only {'k': 22.936364, 'theta': 0.063218, 'mean': 1.45, 'var': 0.091667, 'p90': 1.848759, 'method': 'wilson-hilferty'}
+zhou max(p90_source=1.8, p50_target=2.45) = 2.45
+
+== DCASE documented gamma-90 on source calibration only (no recalibration)
+threshold=1.848759
+target_normal_false_alerts=10/10 rate=1.0000
+target_anomaly_recall=8/8 rate=1.0000
+
+== MachineEar source empirical q=0.90 frozen
+threshold=1.800000
+target_normal_false_alerts=10/10 rate=1.0000
+target_anomaly_recall=8/8 rate=1.0000
+delta_false_alert_rate=+0.0000
+delta_anomaly_recall=+0.0000
+recall_drop=0.0000 tolerance=0.10 proposal_allowed=True
+
+== MachineEar target empirical q=0.90 reviewed recalibration
+threshold=2.800000
+target_normal_false_alerts=2/10 rate=0.2000
+target_anomaly_recall=8/8 rate=1.0000
+delta_false_alert_rate=-0.8000
+delta_anomaly_recall=+0.0000
+recall_drop=0.0000 tolerance=0.10 proposal_allowed=True
+
+-- acceptance comparison uses frozen source quantile as the before state --
+
+== BEFORE frozen source q=0.90
+threshold=1.800000
+target_normal_false_alerts=10/10 rate=1.0000
+target_anomaly_recall=8/8 rate=1.0000
+
+== AFTER target q=0.90
+threshold=2.800000
+target_normal_false_alerts=2/10 rate=0.2000
+target_anomaly_recall=8/8 rate=1.0000
+delta_false_alert_rate=-0.8000
+delta_anomaly_recall=+0.0000
+recall_drop=0.0000 tolerance=0.10 proposal_allowed=True
+
+== Zhou target-aware max(p90 source, p50 target) success anomalies
+threshold=2.450000
+target_normal_false_alerts=5/10 rate=0.5000
+target_anomaly_recall=8/8 rate=1.0000
+delta_false_alert_rate=-0.5000
+delta_anomaly_recall=+0.0000
+recall_drop=0.0000 tolerance=0.10 proposal_allowed=True
+
+-- failure anomalies: recalibration would cut recall --
+
+== BEFORE frozen source on failure anomalies
+threshold=1.800000
+target_normal_false_alerts=10/10 rate=1.0000
+target_anomaly_recall=8/8 rate=1.0000
+
+== AFTER target q=0.90 on failure anomalies
+threshold=2.800000
+target_normal_false_alerts=2/10 rate=0.2000
+target_anomaly_recall=4/8 rate=0.5000
+delta_false_alert_rate=-0.8000
+delta_anomaly_recall=-0.5000
+recall_drop=0.5000 tolerance=0.10 proposal_allowed=False
+
+== Zhou on failure anomalies (no recall gate)
+threshold=2.450000
+target_normal_false_alerts=5/10 rate=0.5000
+target_anomaly_recall=6/8 rate=0.7500
+delta_false_alert_rate=-0.5000
+delta_anomaly_recall=-0.2500
+recall_drop=0.2500 tolerance=0.10 proposal_allowed=False
+
+== audio-anomaly 0.1.0 observed (reference = one source-normal clip)
+audio-anomaly source_normal: anomalies=0 kinds=[] max_score=0.000
+audio-anomaly target_normal_background: anomalies=1 kinds=['tonal'] max_score=50.256
+audio-anomaly target_anomaly_harmonic: anomalies=1 kinds=['burst'] max_score=37.681
+audio-anomaly artifact is per-clip events, not a session false-alert delta or a recall-gated threshold.
