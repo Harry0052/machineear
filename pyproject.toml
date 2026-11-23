@@ -1,0 +1,46 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "machineear"
+version = "0.1.0"
+description = "Audit a frozen machine-audio anomaly threshold after the microphone or background changes."
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT"
+dependencies = [
+  "numpy==1.26.4",
+  "scipy==1.14.1",
+  "scikit-learn==1.5.2",
+]
+
+[project.optional-dependencies]
+test = ["pytest==9.0.3", "ruff==0.8.4"]
+
+[project.scripts]
+machineear = "machineear.cli:main"
+
+[tool.setuptools]
+zip-safe = false
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+machineear = ["fixtures/**/*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.ruff]
+line-length = 120
+target-version = "py311"
+src = ["src", "tests", "scripts"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP"]
+
+[tool.ruff.lint.pycodestyle]
+max-line-length = 160

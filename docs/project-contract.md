@@ -52,7 +52,7 @@ Seeded synthetic motor family, one source microphone domain and one shifted doma
 - The source 0.90 threshold flags target normals more often than the reviewed target 0.90 threshold on the same held-out normal clips.
 - Held-out anomaly recall on the strong-anomaly fixture does not fall by more than 0.25 absolute. The report includes both rates, both counts, and the split sizes.
 - A second fixture, whose labeled anomalies sit inside the shifted-normal score range, must leave the proposal unsuccessful because recall worsens by more than 0.25.
-- Exact false-alert and recall counts for the seeded showcase are pinned in the fixture oracle once the WAV generator is frozen. Those integers, not a re-fit, are the regression gate.
+- Exact false-alert and recall counts for the seeded showcase are pinned in `src/machineear/fixtures/oracle.json` and explained in `docs/oracle.md`. Those integers, not a re-fit, are the regression gate. Observed showcase, domain `mic-b`: source threshold false alerts 10/10 and anomaly recall 8/8; proposed threshold false alerts 2/10 and anomaly recall 8/8; recall drop 0.00. The recall-loss fixture drops recall from 8/8 to 4/8 and does not accept the proposal.
 
 Predeclared showcase bounds, before the WAV scores exist:
 
