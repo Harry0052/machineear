@@ -89,3 +89,17 @@
 - **Open issues:** hosted CI is not green until P07. The local clean-room run is the P06 evidence.
 - **Next phase:** P07
 
+## P07 — Publish and verify on GitHub
+
+- **Phase and status:** P07 PASS
+- **Files changed:** `docs/grokbot-progress.md` (this record). The tagged tree is the previous commit.
+- **Commands and results:**
+  - Authorized destination: `https://github.com/Harry0052/machineear`, public, MIT. `git push` of `cursor/machineear-mvp-9da1` and an unauthenticated `git clone` of tag `v0.1.0` both succeeded. `https://raw.githubusercontent.com/Harry0052/machineear/v0.1.0/LICENSE` returned HTTP 200 and begins `MIT License`.
+  - Pull request: https://github.com/Harry0052/machineear/pull/1 opened against `main`. Not merged.
+  - GitHub Actions run https://github.com/Harry0052/machineear/actions/runs/45115721032 completed with conclusion `success` on commit `6c999027a82437fd85f623327cda8fbb2ad88332`. The job passed checkout, Python setup, install, compile, ruff, pytest, `machineear demo`, and demo-artifact upload. A Node.js 20 deprecation annotation was printed for the pinned actions; the job still passed.
+  - Annotated tag `v0.1.0` points at `6c999027a82437fd85f623327cda8fbb2ad88332` and was pushed. A fresh clone of that tag, `pip install -e ".[test]"`, and `machineear demo --output /tmp/tag-demo` reproduced the showcase oracle (false alerts 10/10 to 2/10, anomaly recall 8/8 to 8/8).
+  - A GitHub Release object with an uploaded wheel was not created. The tag is the published revision. The wheel was built and installed locally during P06.
+- **Artifact paths:** tag `v0.1.0`, CI run 45115721032, pull request 1
+- **Open issues:** `main` is unchanged until the owner merges. The actions print a Node.js 20 deprecation warning.
+- **Next phase:** none. This is the last phase.
+
