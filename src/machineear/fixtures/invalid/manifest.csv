@@ -1,0 +1,6 @@
+clip_id,session_id,microphone_domain,wav_path,split,label,approved_normal,seed
+invalid-zero,invalid-zero,mic-a,wav/all-zero.wav,source_fit,normal,true,5000
+invalid-clipped,invalid-clip,mic-a,wav/clipped.wav,source_fit,normal,true,5001
+invalid-truncated,invalid-trunc,mic-a,wav/truncated.wav,source_fit,normal,true,5002
+invalid-stereo,invalid-stereo,mic-a,wav/stereo.wav,source_fit,normal,true,5003
+invalid-rate,invalid-rate,mic-a,wav/rate-8k.wav,source_fit,normal,true,5004

@@ -1,0 +1,231 @@
+{
+  "hand_quantile": {
+    "quantile": 0.9,
+    "scores": "1.0,1.1,...,1.9",
+    "threshold": 1.8
+  },
+  "insufficient": {
+    "anomaly_status_omitted": false,
+    "domain": "mic-b",
+    "issue_codes": [],
+    "metrics": {
+      "delta_anomaly_recall": null,
+      "delta_false_alert_rate": null,
+      "proposed_threshold": null,
+      "source_threshold": {
+        "target_anomaly_recall": {
+          "alerts": 4,
+          "count": 4,
+          "rate": 1.0
+        },
+        "target_normal_false_alerts": {
+          "alerts": 4,
+          "count": 4,
+          "rate": 1.0
+        }
+      },
+      "split_sizes": {
+        "target_test": 8,
+        "target_test_anomaly": 4,
+        "target_test_normal": 4,
+        "target_test_unknown": 0
+      }
+    },
+    "recall_drop": null,
+    "reference_clip_ids": [
+      "insufficient-source_fit-normal-00",
+      "insufficient-source_fit-normal-01",
+      "insufficient-source_fit-normal-02",
+      "insufficient-source_fit-normal-03"
+    ],
+    "splits": {
+      "source_calibration": 4,
+      "source_fit": 4,
+      "target_calibration": 3,
+      "target_test": 8
+    },
+    "status": "insufficient_normals",
+    "thresholds": {
+      "proposed": null,
+      "source": {
+        "accepted": true,
+        "n_calibration": 4,
+        "quantile": 0.9,
+        "reason": "frozen_source_calibration",
+        "value": 42.477867,
+        "version": "source-empirical-q90-v1"
+      }
+    }
+  },
+  "invalid_issue_codes": [
+    "all_zero",
+    "clipped",
+    "truncated",
+    "unsupported_channels",
+    "unsupported_sample_rate"
+  ],
+  "missing_issue_codes": [
+    "missing_metadata"
+  ],
+  "overlap_issue_codes": [
+    "session_overlap"
+  ],
+  "recall_loss": {
+    "anomaly_status_omitted": false,
+    "domain": "mic-b",
+    "issue_codes": [],
+    "metrics": {
+      "delta_anomaly_recall": -0.5,
+      "delta_false_alert_rate": -0.9,
+      "proposed_threshold": {
+        "target_anomaly_recall": {
+          "alerts": 4,
+          "count": 8,
+          "rate": 0.5
+        },
+        "target_normal_false_alerts": {
+          "alerts": 1,
+          "count": 10,
+          "rate": 0.1
+        }
+      },
+      "source_threshold": {
+        "target_anomaly_recall": {
+          "alerts": 8,
+          "count": 8,
+          "rate": 1.0
+        },
+        "target_normal_false_alerts": {
+          "alerts": 10,
+          "count": 10,
+          "rate": 1.0
+        }
+      },
+      "split_sizes": {
+        "target_test": 18,
+        "target_test_anomaly": 8,
+        "target_test_normal": 10,
+        "target_test_unknown": 0
+      }
+    },
+    "recall_drop": 0.5,
+    "reference_clip_ids": [
+      "recall_loss-source_fit-normal-00",
+      "recall_loss-source_fit-normal-01",
+      "recall_loss-source_fit-normal-02",
+      "recall_loss-source_fit-normal-03",
+      "recall_loss-source_fit-normal-04",
+      "recall_loss-source_fit-normal-05",
+      "recall_loss-source_fit-normal-06",
+      "recall_loss-source_fit-normal-07"
+    ],
+    "splits": {
+      "source_calibration": 10,
+      "source_fit": 8,
+      "source_validation": 4,
+      "target_calibration": 10,
+      "target_test": 18
+    },
+    "status": "calibration_unsuccessful",
+    "thresholds": {
+      "proposed": {
+        "accepted": false,
+        "n_calibration": 10,
+        "quantile": 0.9,
+        "reason": "recall_drop_exceeds_tolerance",
+        "value": 447.988699,
+        "version": "target-empirical-q90-v1"
+      },
+      "source": {
+        "accepted": true,
+        "n_calibration": 10,
+        "quantile": 0.9,
+        "reason": "frozen_source_calibration",
+        "value": 23.707607,
+        "version": "source-empirical-q90-v1"
+      }
+    }
+  },
+  "showcase": {
+    "anomaly_status_omitted": false,
+    "domain": "mic-b",
+    "issue_codes": [],
+    "metrics": {
+      "delta_anomaly_recall": 0.0,
+      "delta_false_alert_rate": -0.8,
+      "proposed_threshold": {
+        "target_anomaly_recall": {
+          "alerts": 8,
+          "count": 8,
+          "rate": 1.0
+        },
+        "target_normal_false_alerts": {
+          "alerts": 2,
+          "count": 10,
+          "rate": 0.2
+        }
+      },
+      "source_threshold": {
+        "target_anomaly_recall": {
+          "alerts": 8,
+          "count": 8,
+          "rate": 1.0
+        },
+        "target_normal_false_alerts": {
+          "alerts": 10,
+          "count": 10,
+          "rate": 1.0
+        }
+      },
+      "split_sizes": {
+        "target_test": 18,
+        "target_test_anomaly": 8,
+        "target_test_normal": 10,
+        "target_test_unknown": 0
+      }
+    },
+    "recall_drop": 0.0,
+    "reference_clip_ids": [
+      "showcase-source_fit-normal-00",
+      "showcase-source_fit-normal-01",
+      "showcase-source_fit-normal-02",
+      "showcase-source_fit-normal-03",
+      "showcase-source_fit-normal-04",
+      "showcase-source_fit-normal-05",
+      "showcase-source_fit-normal-06",
+      "showcase-source_fit-normal-07"
+    ],
+    "splits": {
+      "source_calibration": 10,
+      "source_fit": 8,
+      "source_validation": 4,
+      "target_calibration": 10,
+      "target_test": 18
+    },
+    "status": "ok",
+    "thresholds": {
+      "proposed": {
+        "accepted": true,
+        "n_calibration": 10,
+        "quantile": 0.9,
+        "reason": "within_tolerance",
+        "value": 436.177441,
+        "version": "target-empirical-q90-v1"
+      },
+      "source": {
+        "accepted": true,
+        "n_calibration": 10,
+        "quantile": 0.9,
+        "reason": "frozen_source_calibration",
+        "value": 21.472203,
+        "version": "source-empirical-q90-v1"
+      }
+    }
+  },
+  "tone_bin": {
+    "bin": 4,
+    "hz": 125,
+    "n_fft": 512,
+    "sample_rate_hz": 16000
+  }
+}
